@@ -1,0 +1,87 @@
+/* 字体引入 */
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 全局背景与基础样式 */
+:root {
+  --color-primary: #ffb6c1;
+  --color-background: #fffafa;
+  --color-text-dark: #4a4a4a;
+}
+
+/* 全局正常字体 */
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-dark);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+/* 只有小猫日记用手写体 */
+.cat-diary, .cat-moments, .moment-card {
+  font-family: "ZCOOL KuaiLe", "Ma Shan Zheng", cursive !important;
+}
+
+/* 网格布局 - 4列 */
+.moments-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 桌面4列 */
+  gap: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (max-width: 1200px) {
+  .moments-grid {
+    grid-template-columns: repeat(2, 1fr); /* 平板2列 */
+  }
+}
+
+@media (max-width: 768px) {
+  .moments-grid {
+    grid-template-columns: 1fr; /* 手机1列 */
+  }
+}
+
+/* 时间轴浮动气泡样式 */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.timeline-bubble {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #ffb6c1;
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
+  animation: float 3s ease-in-out infinite;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.timeline-bubble:hover {
+  transform: scale(1.1);
+  animation-play-state: paused;
+}
+
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  background: #ff69b4;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  border: 3px solid white;
+  box-shadow: 0 2px 8px rgba(255, 105, 180, 0.4);
+}
+
+.timeline-line {
+  width: 2px;
+  height: 50px;
+  background: linear-gradient(to bottom, #ffb6c1, #ffe0f0);
+  margin: 20px auto;
+}
